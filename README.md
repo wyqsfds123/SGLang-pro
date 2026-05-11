@@ -11,16 +11,23 @@ SGLang inference engine server with KV Cache benchmarking tools for Qwen3-32B on
 | `sglang_kv_benchmark_http.py` | KV Cache benchmark via SGLang native HTTP server (port 30000) |
 | `test_sglang_cache.py` | In-process SGLang Engine API cache test |
 | `retry_download.sh` | Auto-retry Qwen3-32B model download script |
+| `requirements-lock.txt` | Frozen pip dependencies for exact environment reproduction |
+| `env.example` | Example environment variables (copy to `.env`) |
 
 ## Setup
 
 ```bash
-# Install SGLang from source
-git clone https://github.com/sgl-project/sglang.git
+# Clone your SGLang fork
+git clone https://github.com/wyqsfds123/sglang.git
 cd sglang && pip install -e "python[all]"
 
 # Install dependencies
-pip install -r requirements.txt
+cd ../sglang-pro
+pip install -r requirements-lock.txt
+
+# Configure environment
+cp env.example .env
+# Edit .env with your paths
 
 # Download model
 bash retry_download.sh
